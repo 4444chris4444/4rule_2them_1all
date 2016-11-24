@@ -43,17 +43,43 @@ class Joueur:
     def jouer_tour(self, nb_maximum_lancer=3):
         """
         Cette méthode permet à un joueur de jouer lorsque c'est son tour dans une partie, en lançant les dés.
-        Vous devez demandez au joueur de lancer des dés, de choisir les dés à relancer et puis changer l'attribut combinaison actuelle du
+        Vous devez demandez au joueur de lancer des dés, de choisir les dés à relancer et puis changer l'attribut
+        combinaison actuelle du joueur.
         :param nb_maximum_lancer: le nombre maximum de lancés auquel le joueur a droit lors de ce tour.
         :return: retourne le nombre de lancés que le joueur a fait.
         """
         self.nb_maximum_lancer = nb_maximum_lancer
         nb_lancer = 0
-        resultat = self.lancer_des(3)
-        nb_lancer += 1
-        print("Voici les dés que vous avez lancé : ", resultat)
-        if self.nb_maximum_lancer:
-            des_relancer = int(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relacner séparés d'un espace"))
+        resultat = []
+        continuer = False
+        #input("Appuyer sur la touche entrée pour lancer les dés!")
+        while continuer != True:
+            tirage = self.lancer_des(3-len(resultat))
+            nb_lancer += 1
+            print("Voici les dés que vous avez lancé : ", tirage)
+            if nb_lancer == self.nb_maximum_lancer:
+                print("Vous avez atteint le nombre maximal de lancer!")
+                for i in range(len(tirage)):
+                     resultat.append(tirage[i])
+                continuer = True
+            elif nb_lancer < self.nb_maximum_lancer:
+                print("Voici les dés que vous avez jusqu'à présent", resultat)
+                des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. Exemple : 543 "))
+                if des_relancer == []:
+                    resultat = tirage
+                    break
+                for i in des_relancer:
+                    i = int(i)
+                    if i in(tirage):
+                        tirage.remove(i)
+                    else:
+                        print("Ce choix est invalide.")
+                for i in range(len(tirage)):
+                     resultat.append(tirage[i])
+        self.combinaison_actuelle = resultat
+        print("Votre combinaison finale :", self.combinaison_actuelle)
+
+
 
 
 
@@ -85,7 +111,7 @@ class Joueur:
         """
         chaine = str((self.nom, " - ", self.nb_jetons))
         return chaine
-        raise NotImplementedError("Joueur : __str__ ")
+
 
     def __le__(self, other):
         """
@@ -132,3 +158,4 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      print(joueur)
      print(joueur.lancer_des(3))
+     joueur.jouer_tour(3)

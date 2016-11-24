@@ -20,7 +20,7 @@ class Partie:
         :param nb_joueurs: le nombre de joueur de la partie
         """
         self.nb_joueurs = nb_joueurs
-        raise NotImplementedError("Partie : Constructeur de la classe ")
+
 
     def determiner_premier_lanceur(self):
         """
