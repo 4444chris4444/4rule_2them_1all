@@ -52,7 +52,7 @@ class Joueur:
         nb_lancer = 0
         resultat = []
         continuer = False
-        #input("Appuyer sur la touche entrée pour lancer les dés!")
+        input("Appuyer sur la touche enter pour lancer les dés!")
         while continuer != True:
             tirage = self.lancer_des(3-len(resultat))
             nb_lancer += 1
@@ -64,7 +64,8 @@ class Joueur:
                 continuer = True
             elif nb_lancer < self.nb_maximum_lancer:
                 print("Voici les dés que vous avez jusqu'à présent", resultat)
-                des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. Exemple : 543 "))
+                des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. "
+                                          "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
                 if des_relancer == []:
                     resultat = tirage
                     break
@@ -78,6 +79,7 @@ class Joueur:
                      resultat.append(tirage[i])
         self.combinaison_actuelle = resultat
         print("Votre combinaison finale :", self.combinaison_actuelle)
+        return nb_lancer
 
 
 
@@ -158,4 +160,4 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      print(joueur)
      print(joueur.lancer_des(3))
-     joueur.jouer_tour(3)
+     print(joueur.jouer_tour(3))
