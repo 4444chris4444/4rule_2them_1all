@@ -23,7 +23,7 @@ class Joueur:
         """
         self.nom = nom
         self.nb_jetons = 0
-        self.resultat = None
+        self.combinaison_actuelle = None
 
 
     def lancer_des(self, nombre_des):
@@ -33,11 +33,12 @@ class Joueur:
         :return: une liste de longueur nombre_des contenant les valeurs de chaque dés selon le lancé
         """
         self.nombre_des = nombre_des
-        resultat = []
+        self.combinaison_actuelle = []
         for i in range(nombre_des):
             lancer = randint(1, 6)
-            resultat.append(lancer)
-        return resultat
+            self.combinaison_actuelle.append(lancer)
+        return self.combinaison_actuelle
+
 
     def jouer_tour(self, nb_maximum_lancer=3):
         """
@@ -47,11 +48,15 @@ class Joueur:
         :return: retourne le nombre de lancés que le joueur a fait.
         """
         self.nb_maximum_lancer = nb_maximum_lancer
-        resultat = self.lancer_des(self,3)
+        nb_lancer = 0
+        resultat = self.lancer_des(3)
+        nb_lancer += 1
         print("Voici les dés que vous avez lancé : ", resultat)
-        des_relancer = input("Quels dés voulez-vous relancer?")
+        if self.nb_maximum_lancer:
+            des_relancer = int(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relacner séparés d'un espace"))
 
-        raise NotImplementedError("Joueur : jouer_tour ")
+
+
 
     def ajouter_jetons(self, nb_jetons):
         """
@@ -78,7 +83,7 @@ class Joueur:
         :return: retourne une chaine de caractère qui est une représentation.
             Exemple: "Joueur1 - 12"
         """
-        chaine = (self.nom, " - ", self.nb_jetons)
+        chaine = str((self.nom, " - ", self.nb_jetons))
         return chaine
         raise NotImplementedError("Joueur : __str__ ")
 
@@ -122,6 +127,8 @@ class Joueur:
         :return: True si le nombre de jetons de self est égal à celui de other
         """
         raise NotImplementedError("Joueur : __eq__")
-Joueur.lancer_des(Joueur,3)
-Joueur.jouer_tour(Joueur,3)
 
+if __name__ == '__main__':
+     joueur = Joueur("Antoine")
+     print(joueur)
+     print(joueur.lancer_des(3))
