@@ -102,8 +102,8 @@ class Combinaison:
         """
         self.elements = elements
         self.representant = sorted(elements) #voir meilleure alternative que sorted
-        #self.valeur = valeur
-        #self.type = TypeComb(elements)
+        self.valeur = valeur
+        self.type = TypeComb(elements)
 
 
     def est_nenette(self):
@@ -111,7 +111,10 @@ class Combinaison:
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
-
+        if self.type == TypeComb.NENETTE:
+            return True
+        else:
+            return False
         raise NotImplementedError("Combinaison : est_nenette")
 
     def __lt__(self, other):
