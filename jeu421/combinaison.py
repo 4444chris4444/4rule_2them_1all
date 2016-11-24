@@ -100,9 +100,10 @@ class Combinaison:
         il va falloir les ordornner afin d'initialiser l'attibut représentant de la classe
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
+        self.elements = elements
         self.representant = sorted(elements) #voir meilleure alternative que sorted
         #self.valeur = valeur
-        self.type = TypeComb
+        #self.type = TypeComb(elements)
 
 
     def est_nenette(self):

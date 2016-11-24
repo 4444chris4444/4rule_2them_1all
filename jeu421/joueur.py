@@ -78,6 +78,8 @@ class Joueur:
         :return: retourne une chaine de caractère qui est une représentation.
             Exemple: "Joueur1 - 12"
         """
+        chaine = (self.nom, " - ", self.nb_jetons)
+        return chaine
         raise NotImplementedError("Joueur : __str__ ")
 
     def __le__(self, other):
