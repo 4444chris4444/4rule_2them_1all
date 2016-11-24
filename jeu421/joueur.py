@@ -56,18 +56,19 @@ class Joueur:
         while continuer != True:
             tirage = self.lancer_des(3-len(resultat))
             nb_lancer += 1
-            print("Voici les dés que vous avez lancé : ", tirage)
+            print("Voici les dés que vous avez lancés : ", tirage)
             if nb_lancer == self.nb_maximum_lancer:
                 print("Vous avez atteint le nombre maximal de lancer!")
                 for i in range(len(tirage)):
                      resultat.append(tirage[i])
                 continuer = True
             elif nb_lancer < self.nb_maximum_lancer:
-                print("Voici les dés que vous avez jusqu'à présent", resultat)
+                print("Voici les dés que vous avez gardés", resultat)
                 des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. "
                                           "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
                 if des_relancer == []:
-                    resultat = tirage
+                    for i in range(len(tirage)):
+                        resultat.append(tirage[i])
                     break
                 for i in des_relancer:
                     i = int(i)
@@ -81,19 +82,13 @@ class Joueur:
         print("Votre combinaison finale :", self.combinaison_actuelle)
         return nb_lancer
 
-
-
-
-
-
     def ajouter_jetons(self, nb_jetons):
         """
         Cette méthode permet d'ajouter un nombre de jetons à ceux déjà détenus par le joueur
         :param nb_jetons: nombre de jetons à ajouter
         :return aucun
         """
-        self.nb_jetons_ajout = nb_jetons
-        raise NotImplementedError("Joueur : ajouter_jetons ")
+        self.nb_jetons += nb_jetons
 
     def retirer_jetons(self, nb_jetons):
         """
@@ -101,8 +96,7 @@ class Joueur:
         :param nb_jetons: nombre de jetons à retirer
         :return aucun
         """
-        self.nb_jetons_retire = nb_jetons
-        raise NotImplementedError("Joueur : retirer_jetons ")
+        self.nb_jetons -= nb_jetons
 
     def __str__(self):
         """
@@ -121,8 +115,9 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est inférieur ou égal à celui de other
         """
-        self.other = other
-        raise NotImplementedError("Joueur : __le__ ")
+        if self.nb_jetons <= other:
+            return True
+
 
     def __ge__(self, other):
         """
@@ -130,7 +125,8 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est supérieur ou égal à celui de other
         """
-        raise NotImplementedError("Joueur : __ge__ ")
+        if self.nb_jetons >= other:
+            return True
 
     def __lt__(self, other):
         """
@@ -158,6 +154,14 @@ class Joueur:
 
 if __name__ == '__main__':
      joueur = Joueur("Antoine")
-     print(joueur)
-     print(joueur.lancer_des(3))
+     #print(joueur)
+     #print(joueur.lancer_des(3))
      print(joueur.jouer_tour(3))
+     #print(joueur.combinaison_actuelle)
+     #print(joueur.nom)
+     print(joueur.nb_jetons)
+     joueur.ajouter_jetons(10)
+     print(joueur.nb_jetons)
+     joueur.retirer_jetons(5)
+     print(joueur)
+     print(joueur.__le__(10))
