@@ -141,7 +141,8 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est inférieur à celui de other
         """
-        raise NotImplementedError("Joueur : __lt__ ")
+        if self.nb_jetons < other:
+            return True
 
     def __gt__(self, other):
         """
@@ -149,7 +150,8 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est supérieur à celui de other
         """
-        raise NotImplementedError("Joueur : __gt__ ")
+        if self.nb_jetons > other:
+            return True
 
     def __eq__(self, other):
         """
@@ -157,7 +159,8 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est égal à celui de other
         """
-        raise NotImplementedError("Joueur : __eq__")
+        if self.nb_jetons == other:
+            return True
 
 if __name__ == '__main__':
      joueur = Joueur("Antoine")
