@@ -52,32 +52,39 @@ class Joueur:
         nb_lancer = 0
         resultat = []
         continuer = False
+        print("Vous avez droit à un maximum de", nb_maximum_lancer, "lancer(s).")
         input("Appuyer sur la touche enter pour lancer les dés!")
         while continuer != True:
             tirage = self.lancer_des(3-len(resultat))
             nb_lancer += 1
-            print("Voici les dés que vous avez lancés : ", tirage)
+            print("Voici les dés que vous avez lancés au lancer #", nb_lancer,": ", tirage)
             if nb_lancer == self.nb_maximum_lancer:
                 print("Vous avez atteint le nombre maximal de lancer!")
                 for i in range(len(tirage)):
                      resultat.append(tirage[i])
                 continuer = True
             elif nb_lancer < self.nb_maximum_lancer:
-                print("Voici les dés que vous avez gardés", resultat)
-                des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. "
-                                          "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
-                if des_relancer == []:
-                    for i in range(len(tirage)):
-                        resultat.append(tirage[i])
-                    break
-                for i in des_relancer:
-                    i = int(i)
-                    if i in(tirage):
-                        tirage.remove(i)
-                    else:
-                        print("Ce choix est invalide.")
+                if nb_lancer != 1:
+                    print("Voici les dés que vous avez gardés jusqu'à présent: ", resultat)
+                entree_incorrecte = True
+                while entree_incorrecte != False:
+                    des_relancer = list(input("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. "
+                                              "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
+                    if des_relancer == []:
+                        for i in range(len(tirage)):
+                            resultat.append(tirage[i])
+                        break
+                    for i in des_relancer:
+                        i = int(i)
+                        if i in(tirage):
+                            tirage.remove(i)
+                            entree_incorrecte = False
+                        else:
+                            print("Ce choix est invalide.")
+                            entree_incorrecte = True
+
                 for i in range(len(tirage)):
-                     resultat.append(tirage[i])
+                    resultat.append(tirage[i])
         self.combinaison_actuelle = resultat
         print("Votre combinaison finale :", self.combinaison_actuelle)
         return nb_lancer
