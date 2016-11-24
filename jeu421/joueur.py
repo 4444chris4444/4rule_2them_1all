@@ -14,6 +14,7 @@ class Joueur:
     """
     interface = Interface()
 
+
     def __init__(self, nom):
         """
         Constructeur de la classe, doit initialiser le nom du joueur à la valeur passée en paramètre.
