@@ -21,15 +21,23 @@ class Joueur:
         Le nombre de jetons à zéro, et la combinaison_actuelle à None
         :param nom: nom du joueur
         """
-        raise NotImplementedError("Joueur : Constructeur de la classe ")
+        self.nom = nom
+        self.nb_jetons = 0
+        self.resultat = None
+
 
     def lancer_des(self, nombre_des):
         """
-        Méthode permettant à un joeur de lancer dés
+        Méthode permettant à un joueur de lancer dés
         :param nombre_des: nombre de dés à lancer
         :return: une liste de longueur nombre_des contenant les valeurs de chaque dés selon le lancé
         """
-        raise NotImplementedError("Joueur : lancer_des ")
+        self.nombre_des = nombre_des
+        resultat = []
+        for i in range(nombre_des):
+            lancer = randint(1, 6)
+            resultat.append(lancer)
+        return resultat
 
     def jouer_tour(self, nb_maximum_lancer=3):
         """
@@ -38,6 +46,11 @@ class Joueur:
         :param nb_maximum_lancer: le nombre maximum de lancés auquel le joueur a droit lors de ce tour.
         :return: retourne le nombre de lancés que le joueur a fait.
         """
+        self.nb_maximum_lancer = nb_maximum_lancer
+        resultat = self.lancer_des(self,3)
+        print("Voici les dés que vous avez lancé : ", resultat)
+        des_relancer = input("Quels dés voulez-vous relancer?")
+
         raise NotImplementedError("Joueur : jouer_tour ")
 
     def ajouter_jetons(self, nb_jetons):
@@ -46,6 +59,7 @@ class Joueur:
         :param nb_jetons: nombre de jetons à ajouter
         :return aucun
         """
+        self.nb_jetons_ajout = nb_jetons
         raise NotImplementedError("Joueur : ajouter_jetons ")
 
     def retirer_jetons(self, nb_jetons):
@@ -54,6 +68,7 @@ class Joueur:
         :param nb_jetons: nombre de jetons à retirer
         :return aucun
         """
+        self.nb_jetons_retire = nb_jetons
         raise NotImplementedError("Joueur : retirer_jetons ")
 
     def __str__(self):
@@ -71,6 +86,7 @@ class Joueur:
         :param other: le joueur auquel on se compare
         :return: True si le nombre de jetons de self est inférieur ou égal à celui de other
         """
+        self.other = other
         raise NotImplementedError("Joueur : __le__ ")
 
     def __ge__(self, other):
@@ -104,5 +120,6 @@ class Joueur:
         :return: True si le nombre de jetons de self est égal à celui de other
         """
         raise NotImplementedError("Joueur : __eq__")
-
+Joueur.lancer_des(Joueur,3)
+Joueur.jouer_tour(Joueur,3)
 
