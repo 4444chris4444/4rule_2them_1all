@@ -221,5 +221,6 @@ class Combinaison:
 
         raise NotImplementedError("Combinaison : trouver_valeur")
 
-    if __name__ == '__main__':
-
+if __name__ == '__main__':
+    comb = Combinaison.trouver_valeur([2,2,1])
+    print(c_1)
