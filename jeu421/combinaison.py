@@ -172,4 +172,54 @@ class Combinaison:
         :return: tuple dont le premier élément est la valeur des dés en paramètre,
         et le second élément est leur type (de type TypeComb)
         """
+        if representant == [4, 2, 1]:
+            tuple = (10, TypeComb.LE421)
+
+        elif representant == [1, 1, 1]:
+            tuple = (7, TypeComb.BARAQUE)
+
+        elif representant == [6,1,1]:
+            tuple = (6, TypeComb.FICHE)
+
+        elif representant == [6,6,6]:
+            tuple = (6, TypeComb.BARAQUE)
+
+        elif representant == [5,1,1]:
+            tuple = (5, TypeComb.FICHE)
+
+        elif representant == [5,5,5]:
+            tuple = (5, TypeComb.BARAQUE)
+
+        elif representant == [4, 1, 1]:
+            tuple = (4, TypeComb.FICHE)
+
+        elif representant == [4,4,4]:
+            tuple = (4, TypeComb.BARAQUE)
+
+        elif representant == [3, 1, 1]:
+            tuple = (3, TypeComb.FICHE)
+
+        elif representant == [3,3,3]:
+            tuple = (3, TypeComb.BARAQUE)
+
+        elif representant == [2, 1, 1]:
+            tuple = (2, TypeComb.FICHE)
+
+        elif representant == [2, 2, 2]:
+            tuple = (2, TypeComb.BARAQUE)
+
+        elif representant == [2, 2, 1]:
+            tuple = (4, TypeComb.NENETTE)
+
+        elif representant == [3, 2, 1] or [4,3,2] or [5,4,3] or [6,5,4]:
+            tuple = (2, TypeComb.TIERCE)
+
+        else:
+            tuple = (1, TypeComb.AUTRE)
+
+        return tuple
+
         raise NotImplementedError("Combinaison : trouver_valeur")
+
+    if __name__ == '__main__':
+
