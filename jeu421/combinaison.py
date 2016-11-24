@@ -172,46 +172,72 @@ class Combinaison:
         :return: tuple dont le premier élément est la valeur des dés en paramètre,
         et le second élément est leur type (de type TypeComb)
         """
-        if representant == [4, 2, 1]:
+        liste_421 = [4, 2, 1]
+        liste_111 = [1, 1, 1]
+
+        liste_611 = [6, 1, 1]
+        liste_666 = [6, 6, 6]
+
+        liste_511 = [5, 1, 1]
+        liste_555 = [5, 5, 5]
+
+        liste_411 = [4, 1, 1]
+        liste_444 = [4, 4, 4]
+
+        liste_311 = [3, 1, 1]
+        liste_333 = [3, 3, 3]
+
+        liste_211 = [2, 1, 1]
+        liste_222 = [2, 2, 2]
+
+        liste_221 = [2, 2, 1]
+
+        liste_321 = [3, 2, 1]
+        liste_432 = [4, 3, 2]
+        liste_543 = [5, 4, 3]
+        liste_654 = [6, 5, 4]
+
+
+        if representant == liste_421:
             tuple = (10, TypeComb.LE421)
 
-        elif representant == [1, 1, 1]:
+        elif representant == liste_111:
             tuple = (7, TypeComb.BARAQUE)
 
-        elif representant == [6,1,1]:
+        elif representant == liste_611:
             tuple = (6, TypeComb.FICHE)
 
-        elif representant == [6,6,6]:
+        elif representant == liste_666:
             tuple = (6, TypeComb.BARAQUE)
 
-        elif representant == [5,1,1]:
+        elif representant == liste_511:
             tuple = (5, TypeComb.FICHE)
 
-        elif representant == [5,5,5]:
+        elif representant == liste_555:
             tuple = (5, TypeComb.BARAQUE)
 
-        elif representant == [4, 1, 1]:
+        elif representant == liste_411:
             tuple = (4, TypeComb.FICHE)
 
-        elif representant == [4,4,4]:
+        elif representant == liste_444:
             tuple = (4, TypeComb.BARAQUE)
 
-        elif representant == [3, 1, 1]:
+        elif representant == liste_311:
             tuple = (3, TypeComb.FICHE)
 
-        elif representant == [3,3,3]:
+        elif representant == liste_333:
             tuple = (3, TypeComb.BARAQUE)
 
-        elif representant == [2, 1, 1]:
+        elif representant == liste_211:
             tuple = (2, TypeComb.FICHE)
 
-        elif representant == [2, 2, 2]:
+        elif representant == liste_222:
             tuple = (2, TypeComb.BARAQUE)
 
-        elif representant == [2, 2, 1]:
+        elif representant == liste_221:
             tuple = (4, TypeComb.NENETTE)
 
-        elif representant == [3, 2, 1] or [4,3,2] or [5,4,3] or [6,5,4]:
+        elif representant == liste_321 or liste_432 or liste_543 or liste_654:
             tuple = (2, TypeComb.TIERCE)
 
         else:
@@ -219,8 +245,10 @@ class Combinaison:
 
         return tuple
 
-        raise NotImplementedError("Combinaison : trouver_valeur")
+
 
 if __name__ == '__main__':
-    comb = Combinaison.trouver_valeur([2,2,1])
-    print(c_1)
+
+    representant = [4,2,1]
+    c_1 = Combinaison.trouver_valeur(representant)
+
