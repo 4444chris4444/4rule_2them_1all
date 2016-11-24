@@ -46,6 +46,9 @@ class Joueur:
         :param nb_jetons: nombre de jetons à ajouter
         :return aucun
         """
+
+        #self.XXXX += nb_jetons
+
         raise NotImplementedError("Joueur : ajouter_jetons ")
 
     def retirer_jetons(self, nb_jetons):
@@ -54,6 +57,8 @@ class Joueur:
         :param nb_jetons: nombre de jetons à retirer
         :return aucun
         """
+
+        #self.XXXX +=
         raise NotImplementedError("Joueur : retirer_jetons ")
 
     def __str__(self):

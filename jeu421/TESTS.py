@@ -1,7 +1,4 @@
-#Test de synchro
+from jeu421.combinaison import *
 
-#Test test Antoine222
+if __name__ == '__main__':
 
-#Test test test 1 2 Test antoine222
-
-#Test numéro 3 de push

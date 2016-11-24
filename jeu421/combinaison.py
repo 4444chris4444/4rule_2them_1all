@@ -91,6 +91,7 @@ class Combinaison:
     type: TypeComb représentant le type de la combinaison,
         exemple: TypeComb.FICHE pour la 115, TypeComb.AUTRE pour la 431
     """
+
     def __init__(self, elements):
         """
         Constructeur de la classe
@@ -99,13 +100,17 @@ class Combinaison:
         il va falloir les ordornner afin d'initialiser l'attibut représentant de la classe
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
-        raise NotImplementedError("Combinaison : Constructeur de la classe ")
+        self.representant = sorted(elements) #voir meilleure alternative que sorted
+        #self.valeur = valeur
+        self.type = TypeComb
+
 
     def est_nenette(self):
         """
-        Cette méthode permet de déterminer si une ombinaison est une nénette ou pas
+        Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
+
         raise NotImplementedError("Combinaison : est_nenette")
 
     def __lt__(self, other):
