@@ -174,4 +174,3 @@ if __name__ == '__main__':
      print(joueur.nb_jetons)
      joueur.retirer_jetons(5)
      print(joueur)
-     print(joueur.__le__(10))
