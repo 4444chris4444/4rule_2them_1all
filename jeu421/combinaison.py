@@ -100,9 +100,10 @@ class Combinaison:
         il va falloir les ordornner afin d'initialiser l'attibut représentant de la classe
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
-
-        self.valeur = valeur
-        self.type = TypeComb()
+        self.representant = elements.sort(reverse=True)                        #Ok
+        self.elements = elements                                               #Laisser ou enlever
+        self.valeur = Combinaison.trouver_valeur(elements[0])                  #Ok
+        self.type = Combinaison.trouver_valeur(elements[1])                    #Ok
 
 
     def est_nenette(self):
