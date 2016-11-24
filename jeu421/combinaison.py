@@ -111,10 +111,9 @@ class Combinaison:
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
-        if self.type == TypeComb.NENETTE:
-            return True
-        else:
-            return False
+        #if self.type == TypeComb.NENETTE:
+            #return True
+
         raise NotImplementedError("Combinaison : est_nenette")
 
     def __lt__(self, other):
