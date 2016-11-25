@@ -12,10 +12,10 @@ class Interface:
         """
         self.resultat_du_lancer = resultat_du_lancer
         entree_incorrecte = True
-        while entree_incorrecte != False:
+        liste_retournee_relancement = []
+        while entree_incorrecte == True:
             des_a_relancer = list(self.demander_entree("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer."
                                               "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
-            liste_retournee_relancement = []
             for i in des_a_relancer:
                 i = int(i)
                 if i in resultat_du_lancer:
@@ -24,7 +24,7 @@ class Interface:
                 else:
                     self.afficher("Ce choix est invalide.")
                     entree_incorrecte = True
-            return liste_retournee_relancement
+        return liste_retournee_relancement
 
 
 

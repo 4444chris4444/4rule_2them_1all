@@ -53,19 +53,31 @@ class Joueur:
         resultat = []
         continuer = False
         Joueur.interface.afficher(("Vous avez droit à un maximum de" ,nb_maximum_lancer, "lancer(s)."))
-        Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
-        while continuer != True:
+        #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
+        while nb_lancer <= nb_maximum_lancer:
             lancer = self.lancer_des(3-len(resultat))
+            Joueur.interface.afficher(("Vous les dés que vous avez présentement :", resultat))
             Joueur.interface.afficher(("Vous avez lancer :", lancer))
             nb_lancer +=1
-            resultat = []
-            if nb_lancer == nb_maximum_lancer:
+            if nb_lancer >= 1 and len(resultat) == 3:
+                break
+            elif nb_lancer < nb_maximum_lancer:
+                for i in range(len(lancer)):
+                    resultat.append(lancer[i])
+                des_a_relancer = Joueur.interface.choisir_des_a_relancer(lancer)
+                if des_a_relancer == []:
+                    break
+                for i in des_a_relancer:
+                    resultat.remove(i)
+            elif nb_lancer == nb_maximum_lancer:
+                for i in range(len(lancer)):
+                    resultat.append(lancer[i])
                 Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
-                self.combinaison_actuelle = Combinaison(lancer)
+                Joueur.interface.afficher(("Votre combinaison finale est :", resultat))
+                self.combinaison_actuelle = Combinaison(resultat)
                 print(self.combinaison_actuelle.valeur)
                 return nb_lancer
-            elif nb_lancer < nb_maximum_lancer:
-                for i in Joueur.interface.choisir_des_a_relancer(lancer):
+        return nb_lancer
 
 
 
@@ -148,7 +160,7 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     #print(joueur.jouer_tour(1))
+     print(joueur.jouer_tour(1))
      #print(joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
