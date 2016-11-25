@@ -47,9 +47,9 @@ class Partie:
             rejouer = []
             for i in joueurs:
                 lanceur_actuel = i
-                Partie.interface.demander_entree("C'est au tour du " + str(lanceur_actuel) + " de jouer. Appuyez sur la "
-                                                                                            "toucher Enter pour lancer "
-                                                                                            "les dés.")
+                #Partie.interface.demander_entree("C'est au tour du " + str(lanceur_actuel) + " de jouer. Appuyez sur la "
+                #                                                                           "toucher Enter pour lancer "
+                #                                                                           "les dés.")
                 lancer = Joueur(lanceur_actuel).lancer_des(1)
                 for x in lancer:
                     lancer = x
@@ -77,10 +77,6 @@ class Partie:
         Partie.interface.afficher("Le " + str(self.premier) + " sera le premier lanceur.")
 
 
-
-
-
-
     def jouer_tour_premiere_phase(self):
         """
         Cette méthode permet de faire le tour de tous les joueurs et leur permet de jouer pendant la charge.
@@ -89,7 +85,38 @@ class Partie:
         Vous devez afficher à l'interface un récapitulatif des jetons des joueurs après chaque tour
         :return: un tuple d'entier qui correspond à l'index du perdant et celui du gagnant du tour
         """
-        raise NotImplementedError("Partie : jouer_tour_premiere_phase ")
+        self.joueurs.remove(self.premier)
+        self.joueurs.insert(0, self.premier)
+        while self.nb_jetons_du_pot > 0:
+            combinaison_plus_faible = 0
+            combinaison_plus_forte = 0
+            perdant = []
+            for i in self.joueurs:
+                joueur_actuel = i
+                lancer = Joueur(joueur_actuel).lancer_des(3)
+                valeur_lancer = Combinaison(lancer).valeur
+                if Combinaison(lancer).est_nenette():
+                    Joueur(joueur_actuel).ajouter_jetons(2)
+                elif combinaison_plus_faible == 0:
+                    combinaison_plus_faible = valeur_lancer
+                    combinaison_plus_forte = valeur_lancer
+                    perdant = joueur_actuel
+                elif combinaison_plus_faible > valeur_lancer:
+                    combinaison_plus_faible = valeur_lancer
+                    perdant = joueur_actuel
+                elif combinaison_plus_forte <= valeur_lancer:
+                    combinaison_plus_forte = valeur_lancer
+            Joueur(perdant).ajouter_jetons(combinaison_plus_forte)
+            if combinaison_plus_faible > self.nb_jetons_du_pot:
+                self.nb_jetons_du_pot -= self.nb_jetons_du_pot
+            elif combinaison_plus_faible < self.nb_jetons_du_pot:
+                self.nb_jetons_du_pot -= combinaison_plus_forte
+        for i in self.joueurs:
+            print(Joueur(i).nb_jetons)
+
+
+
+
 
     def jouer_tour_deuxieme_phase(self):
         """
@@ -138,7 +165,10 @@ class Partie:
         """
         Affiche un tableau récapitulatif de la partie
         """
-        raise NotImplementedError("Partie : afficher_recapitulatif ")
+        Partie.interface.afficher("{}\n|{:^41s}| \n|{:^41s}|\n|{:^41s}|\n{}".format("_" * 42, "","Récapitulatif de la partie", "","_" * 42))
+
+
+
 
 if __name__ == '__main__':
     partie1 = Partie(5)
@@ -146,3 +176,4 @@ if __name__ == '__main__':
     #print(partie1.joueurs)
     #print()
     partie1.determiner_premier_lanceur()
+    partie1.jouer_tour_premiere_phase()
