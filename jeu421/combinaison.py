@@ -100,10 +100,10 @@ class Combinaison:
         il va falloir les ordornner afin d'initialiser l'attibut représentant de la classe
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
-        self.representant = elements.sort(reverse=True)                        #Ok
-        self.elements = elements                                               #Laisser ou enlever
-        self.valeur = Combinaison.trouver_valeur(elements[0])                  #Ok
-        self.type = Combinaison.trouver_valeur(elements[1])                    #Ok
+        self.representant = elements.sort(reverse=True)
+        self.elements = elements                                         #Laisser ou enlever? à suivre
+        self.valeur = Combinaison.trouver_valeur(elements[0])
+        self.type = Combinaison.trouver_valeur(elements[1])
 
 
     def est_nenette(self):
@@ -246,6 +246,8 @@ class Combinaison:
         return tuple
 
 if __name__ == '__main__':
+
+    print("---------TESTS TROUVER_VALEUR-----------")
     #TEST BARAQUE
     c1 = Combinaison.trouver_valeur([5, 5, 5])
     c3 = Combinaison.trouver_valeur([1, 1, 1])
@@ -270,3 +272,9 @@ if __name__ == '__main__':
     #TEST AUTRE
     c7 = Combinaison.trouver_valeur([6, 5, 2])
     print(c7)
+
+
+    print("--------TEST EST_NENETTE----------------")
+    c10 = Combinaison.est_nenette()
+
+    print("----------------------------------------")
