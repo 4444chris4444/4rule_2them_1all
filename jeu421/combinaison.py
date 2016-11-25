@@ -129,12 +129,13 @@ class Combinaison:
         if self.valeur < other.valeur:
             return True
 
-        #elif self.valeur == other.valeur:
-            #if self.type < other.type:
-                #return True
-            #elif self.type == other.type:
+        elif self.valeur == other.valeur:
+            if self.type < other.type:
+                return True
+            else:
+                return False
 
-
+                #elif self.type == other.type:
 
 
 
@@ -166,18 +167,16 @@ class Combinaison:
         :return: True si la combinaison self est supérieure à other, False sinon.
 
         """
-        """
-                if self.valeur > other.valeur:
-                    return True
 
-                elif self.valeur == other.valeur:
-                    if self.type > other.type:
-                        return True
-                    elif self.type == other.type:
-                        for i in self.representant:
-                            for j in
-                """
-        raise NotImplementedError("Combinaison : __gt__")
+        if self.valeur > other.valeur:
+            return True
+
+
+        elif self.valeur == other.valeur:
+            if self.type > other.type:
+                return True
+            else:
+                return False
 
     def __str__(self):
 
@@ -309,14 +308,27 @@ if __name__ == '__main__':
     #A = [4,2,1]
     #print(A)
 
-    A = Combinaison([4,2,1])
-    B = Combinaison([1,1,1])
-    print(A == B)
+    A = Combinaison([6,1,1])
+    B = Combinaison([6,6,6])
+    V1 = Combinaison([6,1,1]).valeur
+    V2 = Combinaison([6,6,6]).valeur
+    X = Combinaison([6,1,1]).type
+    Y = Combinaison([6,6,6]).type
+    print(A)
+    print(B)
+    #print(A == B)
+    print(V1)
+    print(V2)
+    print(X)
+    print(Y)
     print(A < B)
 
-    C = Combinaison.valeur([4,2,1])
-    print(C)
+    print(A > B)
 
+    #C = Combinaison([6,2,1]).valeur
+    #D = Combinaison([4,2,1]).type
+    #print(C)
+    #print(D)
 
 
 
