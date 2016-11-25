@@ -53,10 +53,9 @@ class Joueur:
         resultat = []
         Joueur.interface.afficher("Vous avez droit à un maximum de " + str(nb_maximum_lancer) + " lancer(s).")
         #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
-        while nb_lancer <= nb_maximum_lancer:
-            #lancer = self.lancer_des(3-len(resultat))
-            lancer = [1,2,4]
-            Joueur.interface.afficher("Vous les dés que vous avez présentement : " + str(resultat))
+        while nb_lancer < nb_maximum_lancer:
+            lancer = self.lancer_des(3-len(resultat))
+            Joueur.interface.afficher("Voici les dés que vous avez présentement : " + str(resultat))
             Joueur.interface.afficher("Vous avez lancer : " + str(lancer))
             nb_lancer +=1
             if nb_lancer >= 1 and len(resultat) == 3:
@@ -65,7 +64,7 @@ class Joueur:
                 for i in range(len(lancer)):
                     resultat.append(lancer[i])
                 self.combinaison_actuelle = Combinaison(resultat).valeur
-                des_a_relancer = Joueur.interface.choisir_des_a_relancer(lancer)
+                des_a_relancer = Joueur.interface.choisir_des_a_relancer(resultat)
                 if des_a_relancer == []:
                     break
                 for i in des_a_relancer:
@@ -76,7 +75,6 @@ class Joueur:
                 Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
                 Joueur.interface.afficher("Votre combinaison finale est : " + str(resultat))
                 self.combinaison_actuelle = Combinaison(resultat).valeur
-                return nb_lancer
         return nb_lancer
 
     def ajouter_jetons(self, nb_jetons):
@@ -156,8 +154,8 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     joueur.jouer_tour(3)
-     print(joueur.combinaison_actuelle)
+     print("Nombre de tours joués", joueur.jouer_tour(3))
+     print("Nombre de jetons",joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
      #joueur.ajouter_jetons(10)
