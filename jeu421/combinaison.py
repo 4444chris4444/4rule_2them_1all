@@ -102,8 +102,8 @@ class Combinaison:
         """
         self.representant = elements.sort(reverse=True)
         #self.elements = elements                                         #Laisser ou enlever? à suivre
-        self.valeur = Combinaison.trouver_valeur(elements[0])
-        self.type = Combinaison.trouver_valeur(elements[1])
+        self.valeur = Combinaison.trouver_valeur(elements)[0]
+        self.type = Combinaison.trouver_valeur(elements)[1]
 
 
     def est_nenette(self):
