@@ -22,12 +22,12 @@ class Partie:
         self.nb_joueurs = nb_joueurs
         self.joueurs = []
         for i in range(nb_joueurs):
-            nom_joueur = "Joueur"+ " " + str(i+1)
+            nom_joueur = "Joueur" + str(i+1)
             joueur = Joueur(nom_joueur)
             self.joueurs.append(joueur.nom)
         self.nb_jetons_du_pot = 21
         self.nb_maximum_lancer = 3
-        self.premier =
+        self.premier = True
 
 
     def determiner_premier_lanceur(self):
@@ -39,7 +39,12 @@ class Partie:
         L'attribut premier de la classe est initialisé à l'appel de cette méthode
         :return:
         """
-        raise NotImplementedError("Partie : determiner_premier_lanceur ")
+        Partie.interface.afficher("*------Détermination du premier joueur------*")
+        for i in range(len(self.joueurs)):
+            joueur_actuel = self.joueurs[i]
+            Partie.interface.demander_entree("Tour du " + str(joueur_actuel) + ". Appuyer sur la toucher Enter pour lancer!")
+            lancer = Joueur.lancer_des(self, 1)
+            Partie.interface.afficher("Resultat du lancer " + str(lancer))
 
     def jouer_tour_premiere_phase(self):
         """
@@ -101,7 +106,8 @@ class Partie:
         raise NotImplementedError("Partie : afficher_recapitulatif ")
 
 if __name__ == '__main__':
-    partie1 = Partie(1)
+    partie1 = Partie(2)
     #print(partie1)
-    print(partie1.joueurs)
-    print()
+    #print(partie1.joueurs)
+    #print()
+    partie1.determiner_premier_lanceur()

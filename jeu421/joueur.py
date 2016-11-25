@@ -51,12 +51,12 @@ class Joueur:
         self.nb_maximum_lancer = nb_maximum_lancer
         nb_lancer = 0
         resultat = []
-        Joueur.interface.afficher(("Vous avez droit à un maximum de" ,nb_maximum_lancer, "lancer(s)."))
+        Joueur.interface.afficher("Vous avez droit à un maximum de " + str(nb_maximum_lancer) + " lancer(s).")
         Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
         while nb_lancer <= nb_maximum_lancer:
             lancer = self.lancer_des(3-len(resultat))
-            Joueur.interface.afficher(("Vous les dés que vous avez présentement :", resultat))
-            Joueur.interface.afficher(("Vous avez lancer :", lancer))
+            Joueur.interface.afficher("Vous les dés que vous avez présentement : " + str(resultat))
+            Joueur.interface.afficher("Vous avez lancer : " + str(lancer))
             nb_lancer +=1
             if nb_lancer >= 1 and len(resultat) == 3:
 
@@ -73,8 +73,8 @@ class Joueur:
                 for i in range(len(lancer)):
                     resultat.append(lancer[i])
                 Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
-                Joueur.interface.afficher(("Votre combinaison finale est :", resultat))
-                self.combinaison_actuelle = Combinaison(resultat)
+                Joueur.interface.afficher("Votre combinaison finale est : " + str(resultat))
+                self.combinaison_actuelle = Combinaison(resultat).valeur
                 return nb_lancer
 
     def ajouter_jetons(self, nb_jetons):
@@ -154,12 +154,11 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     #joueur.jouer_tour(1)
-     #print(joueur.combinaison_actuelle)
+     joueur.jouer_tour(3)
+     print(joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
      #joueur.ajouter_jetons(10)
      #print(joueur.nb_jetons)
      #joueur.retirer_jetons(5)
      #print(joueur)
-     print(joueur.nom)
