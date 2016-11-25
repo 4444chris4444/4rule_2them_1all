@@ -125,20 +125,19 @@ class Combinaison:
         :return: True si la combinaison self est inférieure à other, False sinon.
 
         """
-        """
+
         if self.valeur < other.valeur:
             return True
 
-        elif self.valeur == other.valeur:
-            if self.type < other.type:
-                return True
-            elif self.type == other.type:
-                for i in self.representant:
-                    for j in other.representant;
-                        if i > j
-        """
+        #elif self.valeur == other.valeur:
+            #if self.type < other.type:
+                #return True
+            #elif self.type == other.type:
 
-        raise NotImplementedError("Combinaison : __lt__")
+
+
+
+
 
     def __eq__(self, other):
         """
@@ -307,9 +306,18 @@ if __name__ == '__main__':
     #c10 = Combinaison.est_nenette()
 
     print("----------------------------------------")
-    A = [4,2,1]
-    print(A)
+    #A = [4,2,1]
+    #print(A)
 
-    A = [1,2,3]
-    B = [1,2,3]
-    print (A == B)
+    A = Combinaison([4,2,1])
+    B = Combinaison([1,1,1])
+    print(A == B)
+    print(A < B)
+
+    C = Combinaison.valeur([4,2,1])
+    print(C)
+
+
+
+
+
