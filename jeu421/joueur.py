@@ -52,7 +52,7 @@ class Joueur:
         nb_lancer = 0
         resultat = []
         Joueur.interface.afficher("Vous avez droit à un maximum de " + str(nb_maximum_lancer) + " lancer(s).")
-        #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
+        Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
         while nb_lancer < nb_maximum_lancer:
             lancer = self.lancer_des(3-len(resultat))
             Joueur.interface.afficher("Voici les dés que vous avez présentement : " + str(resultat))

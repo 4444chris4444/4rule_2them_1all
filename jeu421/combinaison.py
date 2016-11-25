@@ -155,8 +155,6 @@ class Combinaison:
 
 
 
-        raise NotImplementedError("Combinaison : __eq__")
-
     def __gt__(self, other):
         """
         Opérateur de comparaison ( > ) de la classe. Cette méthode est appelée lorsque vous faites A > B

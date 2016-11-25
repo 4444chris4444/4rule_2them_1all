@@ -40,11 +40,31 @@ class Partie:
         :return:
         """
         Partie.interface.afficher("*------Détermination du premier joueur------*")
-        for i in range(len(self.joueurs)):
-            joueur_actuel = self.joueurs[i]
-            Partie.interface.demander_entree("Tour du " + str(joueur_actuel) + ". Appuyer sur la toucher Enter pour lancer!")
-            lancer = Joueur.lancer_des(self, 1)
-            Partie.interface.afficher("Resultat du lancer " + str(lancer))
+        recommencer = True
+        while recommencer == True:
+            plus_petit_lancer = []
+            premier_lanceur = ""
+            for i in range(len(self.joueurs)):
+                joueur_actuel = self.joueurs[i]
+                #Partie.interface.demander_entree("Tour du " + str(joueur_actuel) + ". Appuyer sur la toucher Enter pour lancer!")
+                lancer = Joueur(joueur_actuel).lancer_des(1)
+                #lancer = [3]
+                Partie.interface.afficher("Resultat du lancer " + str(lancer))
+                if plus_petit_lancer == []:
+                    plus_petit_lancer = lancer
+                    premier_lanceur = joueur_actuel
+                    recommencer = False
+                else:
+                    if lancer < plus_petit_lancer:
+                        plus_petit_lancer = lancer
+                        premier_lanceur = joueur_actuel
+                        recommencer = False
+                    elif lancer == plus_petit_lancer:
+                        Partie.interface.afficher("Le résultat des dés est le même! On recommence.")
+                        recommencer = True
+        Partie.interface.afficher("Le " + str(premier_lanceur) + " sera le premier lanceur.")
+
+
 
     def jouer_tour_premiere_phase(self):
         """
