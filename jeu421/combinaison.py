@@ -164,7 +164,7 @@ class Combinaison:
         :return: retourne une chaine de caractère qui est la représentation de la combinaison.
             exemple "421", "666", "542", "221"
         """
-        return "".join(str(e) for e in self)
+        return "".join(str(e) for e in self.representant)
 
 
 
