@@ -102,7 +102,6 @@ class Combinaison:
         """
         self.representant = elements
         self.representant.sort(reverse=True)
-        #self.elements = elements                                         #Laisser ou enlever? à suivre
         self.valeur = Combinaison.trouver_valeur(elements)[0]
         self.type = Combinaison.trouver_valeur(elements)[1]
 
@@ -149,7 +148,12 @@ class Combinaison:
         :param other: membre à droite de la comparaison
         :return: True si la combinaison self est égale à other, False sinon.
         """
-        return self.representant == other.representant
+        if self.representant == other.representant:
+            return True
+        else:
+            return False
+
+
 
         raise NotImplementedError("Combinaison : __eq__")
 
@@ -307,3 +311,7 @@ if __name__ == '__main__':
     print("----------------------------------------")
     A = [4,2,1]
     print(A)
+
+    A = [1,2,3]
+    B = [1,2,3]
+    print (A == B)
