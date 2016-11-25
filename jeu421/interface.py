@@ -10,6 +10,7 @@ class Interface:
         :param resultat_du_lancer:  la liste des valeurs des dés où il faut choisir les valeurs de dés  à relancer
         :return: la liste des valeurs des dés choisis pour le relancement
         """
+
         raise NotImplementedError("Interface : choisir_des_a_relancer ")
 
     def demander_entree(self, message_demande=""):

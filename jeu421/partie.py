@@ -20,6 +20,8 @@ class Partie:
         :param nb_joueurs: le nombre de joueur de la partie
         """
         self.nb_joueurs = nb_joueurs
+        self.joueurs = []
+        self.joueurs.append(Joueur)
 
 
     def determiner_premier_lanceur(self):
@@ -91,3 +93,7 @@ class Partie:
         Affiche un tableau récapitulatif de la partie
         """
         raise NotImplementedError("Partie : afficher_recapitulatif ")
+
+if __name__ == '__main__':
+    partie1 = Partie(4)
+    print(partie1)
