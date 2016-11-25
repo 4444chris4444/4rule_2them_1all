@@ -173,7 +173,7 @@ class Combinaison:
                         return True
                     elif self.type == other.type:
                         for i in self.representant:
-                            for j in:
+                            for j in
                 """
         raise NotImplementedError("Combinaison : __gt__")
 
