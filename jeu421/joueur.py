@@ -112,6 +112,8 @@ class Joueur:
         """
         if self.nb_jetons <= other.nb_jetons:
             return True
+        else:
+            return False
 
 
     def __ge__(self, other):
@@ -122,6 +124,8 @@ class Joueur:
         """
         if self.nb_jetons >= other.nb_jetons:
             return True
+        else:
+            return False
 
     def __lt__(self, other):
         """
@@ -131,6 +135,8 @@ class Joueur:
         """
         if self.nb_jetons < other.nb_jetons:
             return True
+        else:
+            return False
 
     def __gt__(self, other):
         """
@@ -140,6 +146,8 @@ class Joueur:
         """
         if self.nb_jetons > other.nb_jetons:
             return True
+        else:
+            return False
 
     def __eq__(self, other):
         """
@@ -149,13 +157,23 @@ class Joueur:
         """
         if self.nb_jetons == other.nb_jetons:
             return True
+        else:
+            return False
 
 if __name__ == '__main__':
-     joueur = Joueur("Antoine")
+     joueur1 = Joueur("Antoine")
+     joueur2 = Joueur("Krysto")
+     joueur1.jouer_tour(3)
+     joueur2.jouer_tour(3)
+     jetons_joueur1 = joueur1.combinaison_actuelle
+     jetons_joueur2 = joueur2.combinaison_actuelle
+     print("Jetons joueur1", jetons_joueur1)
+     print("Jetons joueur2", jetons_joueur2)
+     print(jetons_joueur1 == jetons_joueur2)
      #print(joueur)
      #print(joueur.lancer_des(3))
-     print("Nombre de tours joués", joueur.jouer_tour(3))
-     print("Nombre de jetons",joueur.combinaison_actuelle)
+     #print("Nombre de tours joués", joueur.jouer_tour(3))
+    # print("Nombre de jetons",joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
      #joueur.ajouter_jetons(10)
