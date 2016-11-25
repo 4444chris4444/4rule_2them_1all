@@ -53,41 +53,23 @@ class Joueur:
         resultat = []
         continuer = False
         Joueur.interface.afficher(("Vous avez droit à un maximum de" ,nb_maximum_lancer, "lancer(s)."))
-        Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
+        #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
         while continuer != True:
-            tirage = self.lancer_des(3-len(resultat))
-            nb_lancer += 1
-            Joueur.interface.afficher(("Voici les dés que vous avez lancés au lancer #", nb_lancer,": ", tirage))
-            if nb_lancer == self.nb_maximum_lancer:
-                Joueur.interface.afficher(("Vous avez atteint le nombre maximal de lancer!"))
-                for i in range(len(tirage)):
-                     resultat.append(tirage[i])
-                continuer = True
-            elif nb_lancer < self.nb_maximum_lancer:
-                if nb_lancer != 1:
-                    Joueur.interface.afficher(("Voici les dés que vous avez gardés jusqu'à présent: ", resultat))
-                entree_incorrecte = True
-                while entree_incorrecte != False:
-                    des_relancer = list(Joueur.interface.demander_entree("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer. "
-                                              "Exemple : 543. Pour garder tous vos dés, appuyez sur la touche enter "))
-                    if des_relancer == []:
-                        for i in range(len(tirage)):
-                            resultat.append(tirage[i])
-                        break
-                    for i in des_relancer:
-                        i = int(i)
-                        if i in(tirage):
-                            tirage.remove(i)
-                            entree_incorrecte = False
-                        else:
-                            Joueur.interface.afficher(("Ce choix est invalide."))
-                            entree_incorrecte = True
+            lancer = self.lancer_des(3-len(resultat))
+            Joueur.interface.afficher(("Vous avez lancer :", lancer))
+            nb_lancer +=1
+            resultat = []
+            if nb_lancer == nb_maximum_lancer:
+                Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
+                self.combinaison_actuelle = Combinaison(lancer)
+                print(self.combinaison_actuelle)
+                return nb_lancer
+            elif nb_lancer < nb_maximum_lancer:
+                for i in Joueur.interface.choisir_des_a_relancer(lancer):
+                    return
 
-                for i in range(len(tirage)):
-                    resultat.append(tirage[i])
-        self.combinaison_actuelle = resultat
-        Joueur.interface.afficher(("Votre combinaison finale :", self.combinaison_actuelle))
-        return nb_lancer
+
+
 
     def ajouter_jetons(self, nb_jetons):
         """
@@ -166,11 +148,11 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     print(joueur.jouer_tour(3))
+     print(joueur.jouer_tour(1))
      #print(joueur.combinaison_actuelle)
      #print(joueur.nom)
-     print(joueur.nb_jetons)
-     joueur.ajouter_jetons(10)
-     print(joueur.nb_jetons)
-     joueur.retirer_jetons(5)
-     print(joueur)
+     #print(joueur.nb_jetons)
+     #joueur.ajouter_jetons(10)
+     #print(joueur.nb_jetons)
+     #joueur.retirer_jetons(5)
+     #print(joueur)

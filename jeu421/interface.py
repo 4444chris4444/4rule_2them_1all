@@ -11,7 +11,6 @@ class Interface:
         :return: la liste des valeurs des dés choisis pour le relancement
         """
         self.resultat_du_lancer = resultat_du_lancer
-        self.afficher(("Voici les dés que vous avez lancés:", self.resultat_du_lancer))
         entree_incorrecte = True
         while entree_incorrecte != False:
             des_a_relancer = list(self.demander_entree("Quels dés voulez-vous relancer? Veuillez entrer les chiffres à relancer."
@@ -37,6 +36,3 @@ class Interface:
     def afficher(self, message=""):
         print(message)
 
-
-interface = Interface()
-print(interface.choisir_des_a_relancer([4,2,1]))
