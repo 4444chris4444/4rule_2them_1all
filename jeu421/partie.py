@@ -47,9 +47,13 @@ class Partie:
             rejouer = []
             for i in joueurs:
                 lanceur_actuel = i
+                Partie.interface.demander_entree("C'est au tour du " + str(lanceur_actuel) + " de jouer. Appuyez sur la "
+                                                                                            "toucher Enter pour lancer "
+                                                                                            "les dés.")
                 lancer = Joueur(lanceur_actuel).lancer_des(1)
                 for x in lancer:
                     lancer = x
+                    Partie.interface.afficher("Vous avez lancé un " + str(lancer))
                 if plus_petit_lancer == 0:
                     plus_petit_lancer = lancer
                     rejouer.append(lanceur_actuel)
@@ -62,16 +66,15 @@ class Partie:
             if len(rejouer)>1 :
                 joueurs = rejouer
                 recommencer = True
+                Partie.interface.afficher("Plusieurs joueurs ont tirés la valeur la plus basse. Ils devront donc "
+                                          "relancer.")
+                for i in rejouer:
+                    Partie.interface.afficher("Le " + str(i) + " devra relancer")
             else:
                 for i in rejouer:
                     self.premier = i
                 recommencer = False
-
         Partie.interface.afficher("Le " + str(self.premier) + " sera le premier lanceur.")
-
-
-
-
 
 
 
