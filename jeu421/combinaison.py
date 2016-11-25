@@ -246,8 +246,27 @@ class Combinaison:
         return tuple
 
 if __name__ == '__main__':
-
+    #TEST BARAQUE
     c1 = Combinaison.trouver_valeur([5, 5, 5])
+    c3 = Combinaison.trouver_valeur([1, 1, 1])
     print(c1)
+    print(c3)
 
+    #TEST NÉNETTE
+    c2 = Combinaison.trouver_valeur([2, 2, 1])
 
+    print(c2)
+    #TEST FICHE
+    c4 = Combinaison.trouver_valeur([2, 1, 1])
+    print(c4)
+    #TEST TIERCE
+    c5 = Combinaison.trouver_valeur([4, 3, 2])
+    print(c5)
+
+    #TEST LE421
+    c6 = Combinaison.trouver_valeur([4, 2, 1])
+    print(c6)
+
+    #TEST AUTRE
+    c7 = Combinaison.trouver_valeur([6, 5, 2])
+    print(c7)
