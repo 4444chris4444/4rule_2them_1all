@@ -110,7 +110,10 @@ class Combinaison:
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
-        return self.type == TypeComb.NENETTE
+        if self.type == TypeComb.NENETTE:
+            return True
+        else:
+            return False
 
 
     def __lt__(self, other):
@@ -126,18 +129,19 @@ class Combinaison:
 
         """
 
-        if self.valeur < other.valeur:
+        if self.valeur < other.valeur:      #OK
             return True
 
-        elif self.valeur == other.valeur:
+        elif self.valeur == other.valeur:   #OK
             if self.type < other.type:
                 return True
-            else:
-                return False
 
-                #elif self.type == other.type:
+            #elif self.type == other.type:
+                #while self.representant[i] > other.representant[i]:
+                    #for i in range(len(self.representant)):
+                       # if self.representant[i]
 
-
+                #return True
 
 
     def __eq__(self, other):
@@ -168,16 +172,17 @@ class Combinaison:
 
         """
 
-        if self.valeur > other.valeur:
+        if self.valeur > other.valeur:      #OK
             return True
 
 
-        elif self.valeur == other.valeur:
+        elif self.valeur == other.valeur:   #OK
             if self.type > other.type:
                 return True
             else:
                 return False
 
+            #ajouter #3
     def __str__(self):
 
         """
@@ -308,12 +313,14 @@ if __name__ == '__main__':
     #A = [4,2,1]
     #print(A)
 
-    A = Combinaison([6,1,1])
-    B = Combinaison([6,6,6])
-    V1 = Combinaison([6,1,1]).valeur
-    V2 = Combinaison([6,6,6]).valeur
-    X = Combinaison([6,1,1]).type
-    Y = Combinaison([6,6,6]).type
+    a = [1,2,3]
+    b = [2,3,4]
+    A = Combinaison(a)
+    B = Combinaison(b)
+    V1 = Combinaison(a).valeur
+    V2 = Combinaison(b).valeur
+    X = Combinaison(a).type
+    Y = Combinaison(b).type
     print(A)
     print(B)
     #print(A == B)
@@ -321,8 +328,9 @@ if __name__ == '__main__':
     print(V2)
     print(X)
     print(Y)
+    print("A < B ?")
     print(A < B)
-
+    print("A > B ?")
     print(A > B)
 
     #C = Combinaison([6,2,1]).valeur
