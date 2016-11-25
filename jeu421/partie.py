@@ -22,6 +22,8 @@ class Partie:
         self.nb_joueurs = nb_joueurs
         self.joueurs = []
         self.joueurs.append(Joueur)
+        self.nb_jetons_du_pot = 21
+        self.nb_maximum_lancer = Joueur.jouer_tour(self)
 
 
     def determiner_premier_lanceur(self):
@@ -96,4 +98,4 @@ class Partie:
 
 if __name__ == '__main__':
     partie1 = Partie(4)
-    print(partie1)
+    #print(partie1)
