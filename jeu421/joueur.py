@@ -52,18 +52,19 @@ class Joueur:
         nb_lancer = 0
         resultat = []
         Joueur.interface.afficher("Vous avez droit à un maximum de " + str(nb_maximum_lancer) + " lancer(s).")
-        Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
+        #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
         while nb_lancer <= nb_maximum_lancer:
-            lancer = self.lancer_des(3-len(resultat))
+            #lancer = self.lancer_des(3-len(resultat))
+            lancer = [1,2,4]
             Joueur.interface.afficher("Vous les dés que vous avez présentement : " + str(resultat))
             Joueur.interface.afficher("Vous avez lancer : " + str(lancer))
             nb_lancer +=1
             if nb_lancer >= 1 and len(resultat) == 3:
-
                 break
             elif nb_lancer < nb_maximum_lancer:
                 for i in range(len(lancer)):
                     resultat.append(lancer[i])
+                self.combinaison_actuelle = Combinaison(resultat).valeur
                 des_a_relancer = Joueur.interface.choisir_des_a_relancer(lancer)
                 if des_a_relancer == []:
                     break
@@ -76,6 +77,7 @@ class Joueur:
                 Joueur.interface.afficher("Votre combinaison finale est : " + str(resultat))
                 self.combinaison_actuelle = Combinaison(resultat).valeur
                 return nb_lancer
+        return nb_lancer
 
     def ajouter_jetons(self, nb_jetons):
         """
