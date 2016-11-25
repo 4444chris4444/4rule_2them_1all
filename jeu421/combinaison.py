@@ -105,7 +105,6 @@ class Combinaison:
         self.valeur = Combinaison.trouver_valeur(elements)[0]
         self.type = Combinaison.trouver_valeur(elements)[1]
 
-
     def est_nenette(self):
         """
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas

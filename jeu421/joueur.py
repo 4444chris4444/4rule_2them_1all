@@ -53,7 +53,7 @@ class Joueur:
         resultat = []
         continuer = False
         Joueur.interface.afficher(("Vous avez droit à un maximum de" ,nb_maximum_lancer, "lancer(s)."))
-        #Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
+        Joueur.interface.demander_entree("Appuyer sur la touche enter pour lancer les dés!")
         while continuer != True:
             lancer = self.lancer_des(3-len(resultat))
             Joueur.interface.afficher(("Vous avez lancer :", lancer))
@@ -61,12 +61,12 @@ class Joueur:
             resultat = []
             if nb_lancer == nb_maximum_lancer:
                 Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
-                self.combinaison_actuelle = Combinaison.trouver_valeur(lancer)[0]
-                print(self.combinaison_actuelle)
+                self.combinaison_actuelle = Combinaison(lancer)
+                print(self.combinaison_actuelle.valeur)
                 return nb_lancer
             elif nb_lancer < nb_maximum_lancer:
                 for i in Joueur.interface.choisir_des_a_relancer(lancer):
-                    return
+
 
 
 
@@ -148,7 +148,7 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     print(joueur.jouer_tour(2))
+     #print(joueur.jouer_tour(1))
      #print(joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
