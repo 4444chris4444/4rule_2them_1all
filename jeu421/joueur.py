@@ -61,7 +61,7 @@ class Joueur:
             resultat = []
             if nb_lancer == nb_maximum_lancer:
                 Joueur.interface.afficher("Vous avez atteint le nombre maximal de lancer")
-                self.combinaison_actuelle = Combinaison.valeur(lancer)
+                self.combinaison_actuelle = Combinaison.trouver_valeur(lancer)[0]
                 print(self.combinaison_actuelle)
                 return nb_lancer
             elif nb_lancer < nb_maximum_lancer:
@@ -148,7 +148,7 @@ if __name__ == '__main__':
      joueur = Joueur("Antoine")
      #print(joueur)
      #print(joueur.lancer_des(3))
-     print(joueur.jouer_tour(1))
+     print(joueur.jouer_tour(2))
      #print(joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
