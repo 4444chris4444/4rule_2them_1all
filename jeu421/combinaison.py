@@ -110,8 +110,8 @@ class Combinaison:
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
-        if self.type == TypeComb.NENETTE:
-            return True
+        return self.type == TypeComb.NENETTE
+
 
     def __lt__(self, other):
         """
@@ -125,8 +125,18 @@ class Combinaison:
         :return: True si la combinaison self est inférieure à other, False sinon.
 
         """
-        #if TypeComb.value(self) < TypeComb.value(other):
-            #return True
+        """
+        if self.valeur < other.valeur:
+            return True
+
+        elif self.valeur == other.valeur:
+            if self.type < other.type:
+                return True
+            elif self.type == other.type:
+                for i in self.representant:
+                    for j in other.representant;
+                        if i > j
+        """
 
         raise NotImplementedError("Combinaison : __lt__")
 
@@ -137,8 +147,9 @@ class Combinaison:
         Une combinaison A est égale à une autre combinaison B si elles ont le même représentant
         :param other: membre à droite de la comparaison
         :return: True si la combinaison self est égale à other, False sinon.
-
         """
+        return self.representant == other.representant
+
         raise NotImplementedError("Combinaison : __eq__")
 
     def __gt__(self, other):
@@ -153,6 +164,17 @@ class Combinaison:
         :return: True si la combinaison self est supérieure à other, False sinon.
 
         """
+        """
+                if self.valeur > other.valeur:
+                    return True
+
+                elif self.valeur == other.valeur:
+                    if self.type > other.type:
+                        return True
+                    elif self.type == other.type:
+                        for i in self.representant:
+                            for j in:
+                """
         raise NotImplementedError("Combinaison : __gt__")
 
     def __str__(self):
