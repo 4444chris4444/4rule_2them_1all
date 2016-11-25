@@ -27,7 +27,7 @@ class Partie:
             self.joueurs.append(joueur.nom)
         self.nb_jetons_du_pot = 21
         self.nb_maximum_lancer = 3
-        self.premier = True
+        self.premier = ""
 
 
     def determiner_premier_lanceur(self):
@@ -40,29 +40,41 @@ class Partie:
         :return:
         """
         Partie.interface.afficher("*------Détermination du premier joueur------*")
+        joueurs = self.joueurs
         recommencer = True
         while recommencer == True:
-            plus_petit_lancer = []
-            premier_lanceur = ""
-            for i in range(len(self.joueurs)):
-                joueur_actuel = self.joueurs[i]
-                #Partie.interface.demander_entree("Tour du " + str(joueur_actuel) + ". Appuyer sur la toucher Enter pour lancer!")
-                lancer = Joueur(joueur_actuel).lancer_des(1)
-                #lancer = [3]
-                Partie.interface.afficher("Resultat du lancer " + str(lancer))
-                if plus_petit_lancer == []:
+            plus_petit_lancer = 0
+            rejouer = []
+            for i in joueurs:
+                lanceur_actuel = i
+                lancer = Joueur(lanceur_actuel).lancer_des(1)
+                for x in lancer:
+                    lancer = x
+                if plus_petit_lancer == 0:
                     plus_petit_lancer = lancer
-                    premier_lanceur = joueur_actuel
-                    recommencer = False
-                else:
-                    if lancer < plus_petit_lancer:
-                        plus_petit_lancer = lancer
-                        premier_lanceur = joueur_actuel
-                        recommencer = False
-                    elif lancer == plus_petit_lancer:
-                        Partie.interface.afficher("Le résultat des dés est le même! On recommence.")
-                        recommencer = True
-        Partie.interface.afficher("Le " + str(premier_lanceur) + " sera le premier lanceur.")
+                    rejouer.append(lanceur_actuel)
+                elif plus_petit_lancer > lancer:
+                    plus_petit_lancer = lancer
+                    rejouer = []
+                    rejouer.append(lanceur_actuel)
+                elif plus_petit_lancer == lancer:
+                    rejouer.append(lanceur_actuel)
+            if len(rejouer)>1 :
+                joueurs = rejouer
+                recommencer = True
+            else:
+                for i in rejouer:
+                    self.premier = i
+                recommencer = False
+
+        Partie.interface.afficher("Le " + str(self.premier) + " sera le premier lanceur.")
+
+
+
+
+
+
+
 
 
 
@@ -126,7 +138,7 @@ class Partie:
         raise NotImplementedError("Partie : afficher_recapitulatif ")
 
 if __name__ == '__main__':
-    partie1 = Partie(2)
+    partie1 = Partie(5)
     #print(partie1)
     #print(partie1.joueurs)
     #print()
