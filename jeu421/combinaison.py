@@ -111,8 +111,8 @@ class Combinaison:
         Cette méthode permet de déterminer si une combinaison est une nénette ou pas
         :return: True si c'est le cas, False sinon
         """
-        #if self.type == TypeComb.NENETTE:
-            #return True
+        if self.type == TypeComb.NENETTE:
+            return True
 
         raise NotImplementedError("Combinaison : est_nenette")
 
@@ -237,7 +237,7 @@ class Combinaison:
         elif representant == liste_221:
             tuple = (4, TypeComb.NENETTE)
 
-        elif representant == liste_321 or liste_432 or liste_543 or liste_654:
+        elif representant == liste_321 or representant == liste_432 or representant == liste_543 or representant == liste_654:
             tuple = (2, TypeComb.TIERCE)
 
         else:
@@ -245,10 +245,9 @@ class Combinaison:
 
         return tuple
 
-
-
 if __name__ == '__main__':
 
-    representant = [4,2,1]
-    c_1 = Combinaison.trouver_valeur(representant)
+    c1 = Combinaison.trouver_valeur([5, 5, 5])
+    print(c1)
+
 
