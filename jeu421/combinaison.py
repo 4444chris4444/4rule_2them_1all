@@ -101,7 +101,7 @@ class Combinaison:
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
         self.representant = elements.sort(reverse=True)
-        self.elements = elements                                         #Laisser ou enlever? à suivre
+        #self.elements = elements                                         #Laisser ou enlever? à suivre
         self.valeur = Combinaison.trouver_valeur(elements[0])
         self.type = Combinaison.trouver_valeur(elements[1])
 
@@ -113,8 +113,6 @@ class Combinaison:
         """
         if self.type == TypeComb.NENETTE:
             return True
-
-        raise NotImplementedError("Combinaison : est_nenette")
 
     def __lt__(self, other):
         """
@@ -128,6 +126,9 @@ class Combinaison:
         :return: True si la combinaison self est inférieure à other, False sinon.
 
         """
+        #if TypeComb.value(self) < TypeComb.value(other):
+            #return True
+
         raise NotImplementedError("Combinaison : __lt__")
 
     def __eq__(self, other):
@@ -156,13 +157,16 @@ class Combinaison:
         raise NotImplementedError("Combinaison : __gt__")
 
     def __str__(self):
+
         """
         Cette méthode retourne une représentation d'une combinaison.
         Cette méthode est appelée lorsque vous faites print(A) où A est une combinaison
         :return: retourne une chaine de caractère qui est la représentation de la combinaison.
             exemple "421", "666", "542", "221"
         """
-        raise NotImplementedError("Combinaison : __str__")
+        return ''.join(str(e) for e in self)
+
+
 
     @staticmethod
     def trouver_valeur(representant):
