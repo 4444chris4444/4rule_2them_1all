@@ -100,7 +100,7 @@ class Combinaison:
         il va falloir les ordornner afin d'initialiser l'attibut représentant de la classe
         N'oubliez pas d'initialiser les attributs valeur et type de la classe.
         """
-        self.representant = elements.sort(reverse=True)
+        self.representant = sorted(elements, reverse=True)
         #self.elements = elements                                         #Laisser ou enlever? à suivre
         self.valeur = Combinaison.trouver_valeur(elements)[0]
         self.type = Combinaison.trouver_valeur(elements)[1]
