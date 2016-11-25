@@ -21,9 +21,13 @@ class Partie:
         """
         self.nb_joueurs = nb_joueurs
         self.joueurs = []
-        self.joueurs.append(Joueur)
+        for i in range(nb_joueurs):
+            nom_joueur = "Joueur"+ " " + str(i+1)
+            joueur = Joueur(nom_joueur)
+            self.joueurs.append(joueur.nom)
         self.nb_jetons_du_pot = 21
-        self.nb_maximum_lancer = Joueur.jouer_tour(self)
+        self.nb_maximum_lancer = 3
+        self.premier =
 
 
     def determiner_premier_lanceur(self):
@@ -97,5 +101,7 @@ class Partie:
         raise NotImplementedError("Partie : afficher_recapitulatif ")
 
 if __name__ == '__main__':
-    partie1 = Partie(4)
+    partie1 = Partie(1)
     #print(partie1)
+    print(partie1.joueurs)
+    print()
