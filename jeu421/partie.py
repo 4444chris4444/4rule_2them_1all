@@ -115,7 +115,6 @@ class Partie:
             elif combinaison_plus_faible < self.nb_jetons_du_pot:
                 self.nb_jetons_du_pot -= combinaison_plus_forte
                 perdant.nb_jetons += combinaison_plus_forte
-        return (self.joueurs.index(perdant), self.joueurs.index(gagnant))
 
 
     def jouer_tour_deuxieme_phase(self):
@@ -126,7 +125,6 @@ class Partie:
         Vous devez afficher à l'interface un récapitulatif des jetons des joueurs après le tour
         :return: un tuple d'entier qui correspond à l'index du perdant et celui du gagnant du tour
         """
-        raise NotImplementedError("Partie : jouer_tour_deuxieme_phase ")
 
     def jouer(self):
         """
