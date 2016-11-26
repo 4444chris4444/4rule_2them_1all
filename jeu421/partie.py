@@ -170,7 +170,7 @@ class Partie:
         :param position: la position du joueur dans la liste des joueurs à retirer
         :return:
         """
-        raise NotImplementedError("Partie : retirer_joueur ")
+        del self.joueurs[position]
 
     def afficher_recapitulatif(self):
         """
