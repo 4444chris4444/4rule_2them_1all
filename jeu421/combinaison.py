@@ -128,7 +128,6 @@ class Combinaison:
         :return: True si la combinaison self est inférieure à other, False sinon.
 
         """
-
         if self.valeur < other.valeur:      #OK
             return True
 
@@ -136,12 +135,12 @@ class Combinaison:
             if self.type < other.type:
                 return True
 
-            #elif self.type == other.type:
-                #while self.representant[i] > other.representant[i]:
-                    #for i in range(len(self.representant)):
-                       # if self.representant[i]
+            else:
+                return False
 
-                #return True
+
+
+
 
 
     def __eq__(self, other):
@@ -182,7 +181,7 @@ class Combinaison:
             else:
                 return False
 
-            #ajouter #3
+
     def __str__(self):
 
         """
@@ -192,7 +191,6 @@ class Combinaison:
             exemple "421", "666", "542", "221"
         """
         return "".join(str(e) for e in self.representant)
-
 
 
 
@@ -277,66 +275,7 @@ class Combinaison:
 
         return tuple
 
-if __name__ == '__main__':
 
-    print("---------TESTS TROUVER_VALEUR-----------")
-    #TEST BARAQUE
-    #c1 = Combinaison.trouver_valeur([5, 5, 5])
-    #c3 = Combinaison.trouver_valeur([1, 1, 1])
-    #print(c1)
-    #print(c3)
-
-    #TEST NÉNETTE
-    #c2 = Combinaison.trouver_valeur([2, 2, 1])
-
-    #print(c2)
-    #TEST FICHE
-    #c4 = Combinaison.trouver_valeur([2, 1, 1])
-    #print(c4)
-    #TEST TIERCE
-    #c5 = Combinaison.trouver_valeur([4, 3, 2])
-    #print(c5)
-
-    #TEST LE421
-    #c6 = Combinaison.trouver_valeur([4, 2, 1])
-    #print(c6)
-
-    #TEST AUTRE
-    #c7 = Combinaison.trouver_valeur([6, 5, 2])
-    #print(c7)
-
-
-    #print("--------TEST EST_NENETTE----------------")
-    #c10 = Combinaison.est_nenette()
-
-    print("----------------------------------------")
-    #A = [4,2,1]
-    #print(A)
-
-    a = [1,2,3]
-    b = [2,3,4]
-    A = Combinaison(a)
-    B = Combinaison(b)
-    V1 = Combinaison(a).valeur
-    V2 = Combinaison(b).valeur
-    X = Combinaison(a).type
-    Y = Combinaison(b).type
-    print(A)
-    print(B)
-    #print(A == B)
-    print(V1)
-    print(V2)
-    print(X)
-    print(Y)
-    print("A < B ?")
-    print(A < B)
-    print("A > B ?")
-    print(A > B)
-
-    #C = Combinaison([6,2,1]).valeur
-    #D = Combinaison([4,2,1]).type
-    #print(C)
-    #print(D)
 
 
 
