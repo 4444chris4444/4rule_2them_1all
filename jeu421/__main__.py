@@ -4,7 +4,7 @@ from jeu421.interface import Interface
 
 
 if __name__ == "__main__":
-    seed(42) # Cette instruction sert à fixer le générateur de nombre aléatoire pour déboguer efficacement votre code
+    #seed(42) # Cette instruction sert à fixer le générateur de nombre aléatoire pour déboguer efficacement votre code
     interface = Interface()
     interface.afficher("{}\n*{:^40s}*\n*{:^40s}*\n*{:^40s}*\n{}".format("*"*42, "",
                        "Bienvenue dans le JEU du 421", "", "*"*42))

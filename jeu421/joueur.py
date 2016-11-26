@@ -84,6 +84,7 @@ class Joueur:
         :return aucun
         """
         self.nb_jetons += nb_jetons
+        return nb_jetons
 
     def retirer_jetons(self, nb_jetons):
         """
@@ -100,7 +101,7 @@ class Joueur:
         :return: retourne une chaine de caractère qui est une représentation.
             Exemple: "Joueur1 - 12"
         """
-        chaine = str((self.nom, " - ", self.nb_jetons))
+        chaine = str((str(self.nom) + " - " + str(self.nb_jetons)))
         return chaine
 
 
@@ -162,21 +163,21 @@ class Joueur:
 
 if __name__ == '__main__':
      joueur1 = Joueur("Antoine")
-     joueur2 = Joueur("Krysto")
+     #joueur2 = Joueur("Krysto")
      joueur1.jouer_tour(3)
-     joueur2.jouer_tour(3)
+     #joueur2.jouer_tour(3)
      jetons_joueur1 = joueur1.combinaison_actuelle
-     jetons_joueur2 = joueur2.combinaison_actuelle
+     #jetons_joueur2 = joueur2.combinaison_actuelle
      print("Jetons joueur1", jetons_joueur1)
-     print("Jetons joueur2", jetons_joueur2)
-     print(jetons_joueur1 == jetons_joueur2)
+     #print("Jetons joueur2", jetons_joueur2)
+     #print(jetons_joueur1 == jetons_joueur2)
      #print(joueur)
      #print(joueur.lancer_des(3))
      #print("Nombre de tours joués", joueur.jouer_tour(3))
-    # print("Nombre de jetons",joueur.combinaison_actuelle)
+     #print("Nombre de jetons",joueur.combinaison_actuelle)
      #print(joueur.nom)
      #print(joueur.nb_jetons)
-     #joueur.ajouter_jetons(10)
-     #print(joueur.nb_jetons)
+     joueur1.ajouter_jetons(10)
+     print(joueur1.nb_jetons)
      #joueur.retirer_jetons(5)
      #print(joueur)

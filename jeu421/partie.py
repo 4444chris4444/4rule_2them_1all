@@ -47,9 +47,9 @@ class Partie:
             rejouer = []
             for i in joueurs:
                 lanceur_actuel = i
-                #Partie.interface.demander_entree("C'est au tour du " + str(lanceur_actuel) + " de jouer. Appuyez sur la "
-                #                                                                           "toucher Enter pour lancer "
-                #                                                                           "les dés.")
+                #Partie.interface.demander_entree("C'est au tour du " + str(lanceur_actuel) + " de jouer. Appuyez sur la toucher Enter pour lancer les dés.")
+
+
                 lancer = Joueur(lanceur_actuel).lancer_des(1)
                 for x in lancer:
                     lancer = x
@@ -106,13 +106,17 @@ class Partie:
                     perdant = joueur_actuel
                 elif combinaison_plus_forte <= valeur_lancer:
                     combinaison_plus_forte = valeur_lancer
-            Joueur(perdant).ajouter_jetons(combinaison_plus_forte)
+                    Joueur(perdant).ajouter_jetons(combinaison_plus_forte)
             if combinaison_plus_faible > self.nb_jetons_du_pot:
-                self.nb_jetons_du_pot -= self.nb_jetons_du_pot
+                            self.nb_jetons_du_pot -= self.nb_jetons_du_pot
             elif combinaison_plus_faible < self.nb_jetons_du_pot:
-                self.nb_jetons_du_pot -= combinaison_plus_forte
-        for i in self.joueurs:
-            print(Joueur(i).nb_jetons)
+                        self.nb_jetons_du_pot -= combinaison_plus_forte
+            for i in self.joueurs:
+                print(Joueur(i).nb_jetons)
+
+
+
+
 
 
 
@@ -143,7 +147,11 @@ class Partie:
         :param joueur: le joueur en question
         :return: True si le joueur n'a plus de jetons, False sinon
         """
-        raise NotImplementedError("Partie : verifier_gagnant ")
+        if joueur.nb_jetons == 0:
+            return True
+        else:
+            return False
+
 
     def verifier_perdant(self, joueur):
         """
@@ -151,7 +159,10 @@ class Partie:
         :param joueur: le joueur en question
         :return: True si le joueur a tous les jetons de la partie, False sinon
         """
-        raise NotImplementedError("Partie : verifier_perdant ")
+        if joueur.nb_jetons == 21:
+            return True
+        else:
+            return False
 
     def retirer_joueur(self, position):
         """
@@ -171,9 +182,13 @@ class Partie:
 
 
 if __name__ == '__main__':
-    partie1 = Partie(5)
+    partie1 = Partie(2)
+    joueur1 = Joueur("Antoine")
+    joueur1.ajouter_jetons(21)
+    print(partie1.verifier_gagnant(joueur1))
+    print(partie1.verifier_perdant(joueur1))
     #print(partie1)
     #print(partie1.joueurs)
     #print()
-    partie1.determiner_premier_lanceur()
-    partie1.jouer_tour_premiere_phase()
+    #partie1.determiner_premier_lanceur()
+    #partie1.jouer_tour_premiere_phase()
