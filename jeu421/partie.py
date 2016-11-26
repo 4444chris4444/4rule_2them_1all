@@ -91,35 +91,31 @@ class Partie:
             combinaison_plus_faible = 0
             combinaison_plus_forte = 0
             perdant = []
+            gagnant = []
             for i in self.joueurs:
-                joueur_actuel = i
-                lancer = Joueur(joueur_actuel).lancer_des(3)
+                joueur = Joueur(i)
+                lancer = joueur.lancer_des(3)
                 valeur_lancer = Combinaison(lancer).valeur
                 if Combinaison(lancer).est_nenette():
-                    Joueur(joueur_actuel).ajouter_jetons(2)
+                    joueur.ajouter_jetons(2)
                 elif combinaison_plus_faible == 0:
                     combinaison_plus_faible = valeur_lancer
                     combinaison_plus_forte = valeur_lancer
-                    perdant = joueur_actuel
+                    perdant = joueur
+                    gagnant = joueur
                 elif combinaison_plus_faible > valeur_lancer:
                     combinaison_plus_faible = valeur_lancer
-                    perdant = joueur_actuel
+                    perdant = joueur
                 elif combinaison_plus_forte <= valeur_lancer:
                     combinaison_plus_forte = valeur_lancer
-                    Joueur(perdant).ajouter_jetons(combinaison_plus_forte)
+                    gagnant = joueur
             if combinaison_plus_faible > self.nb_jetons_du_pot:
-                            self.nb_jetons_du_pot -= self.nb_jetons_du_pot
+                self.nb_jetons_du_pot -= self.nb_jetons_du_pot
+                perdant.nb_jetons += self.nb_jetons_du_pot
             elif combinaison_plus_faible < self.nb_jetons_du_pot:
-                        self.nb_jetons_du_pot -= combinaison_plus_forte
-            for i in self.joueurs:
-                print(Joueur(i).nb_jetons)
-
-
-
-
-
-
-
+                self.nb_jetons_du_pot -= combinaison_plus_forte
+                perdant.nb_jetons += combinaison_plus_forte
+        return (self.joueurs.index(perdant), self.joueurs.index(gagnant))
 
 
     def jouer_tour_deuxieme_phase(self):
@@ -139,7 +135,9 @@ class Partie:
         Une fois la charge terminé, la décharge débute par le dernier perdant de la charge.
         Le jeu se termine dès qu'un joueur a tous les jetons de la partie
         """
-        raise NotImplementedError("Partie : jouer ")
+        Partie.determiner_premier_lanceur(self)
+        Partie.jouer_tour_premiere_phase(self)
+        Partie.jouer_tour_deuxieme_phase(self)
 
     def verifier_gagnant(self, joueur):
         """
@@ -177,18 +175,3 @@ class Partie:
         Affiche un tableau récapitulatif de la partie
         """
         Partie.interface.afficher("{}\n|{:^41s}| \n|{:^41s}|\n|{:^41s}|\n{}".format("_" * 42, "","Récapitulatif de la partie", "","_" * 42))
-
-
-
-
-if __name__ == '__main__':
-    partie1 = Partie(2)
-    joueur1 = Joueur("Antoine")
-    joueur1.ajouter_jetons(21)
-    print(partie1.verifier_gagnant(joueur1))
-    print(partie1.verifier_perdant(joueur1))
-    #print(partie1)
-    #print(partie1.joueurs)
-    #print()
-    #partie1.determiner_premier_lanceur()
-    #partie1.jouer_tour_premiere_phase()
